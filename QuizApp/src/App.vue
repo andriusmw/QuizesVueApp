@@ -1,6 +1,6 @@
 <script setup>
   import q from "../src/assets/data/quizes.json"
-  import {ref, watcg} from "vue"
+  import {ref, watch} from "vue"
 
   const quizes = ref(q)
   const search = ref("")
