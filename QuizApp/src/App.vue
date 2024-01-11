@@ -43,6 +43,12 @@ header input {
   border-radius: 5px;
 }
 
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
 /* CARD */ 
 
 .card {
@@ -53,6 +59,7 @@ header input {
   margin-bottom: 35px;
   margin-right: 20px;
   cursor: pointer;
+  min-width: max-content;
 
 }
 
@@ -60,6 +67,15 @@ header input {
   width: 100%;
   height: 190px;
   margin: 0;
+}
+
+.card .card-text {
+  padding: 0 5px;
+
+}
+
+.card .card-text h2 {
+  font-weight: bold;
 }
 
 </style>
