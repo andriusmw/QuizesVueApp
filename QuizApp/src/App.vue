@@ -5,7 +5,13 @@
         <input type="text" placeholder="Search...">
       </header>
       <div class="options-container">
-
+        <div class="card">
+          <img src="https://cdn2.vectorstock.com/i/1000x1000/60/81/math-font-with-symbol-and-formula-icon-vector-39626081.jpg" alt="Math-img">
+          <div class="card-text">
+              <h2>Math</h2>
+              <p>15 questions</p>
+          </div>
+        </div>
       </div>
   </div>
 </template>z
@@ -35,6 +41,25 @@ header input {
   background-color: rgba(128, 128, 128, 0.1);
   padding: 10px;
   border-radius: 5px;
+}
+
+/* CARD */ 
+
+.card {
+  width: 310px;
+  overflow: hidden;
+  border-radius: 2%;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 35px;
+  margin-right: 20px;
+  cursor: pointer;
+
+}
+
+.card img {
+  width: 100%;
+  height: 190px;
+  margin: 0;
 }
 
 </style>
