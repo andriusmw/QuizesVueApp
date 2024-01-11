@@ -28,6 +28,7 @@ el valor de search en minuscula; search es ele stado del input/buscador
         <input v-model.trim="search" type="text" placeholder="Search...">
       </header>
       <div class="options-container">
+        <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz"/>
     <!--    <div v-for="quiz in quizes" :key="quiz.id" class="card"> 
         
           <img :src="quiz.img" alt="Math-img">

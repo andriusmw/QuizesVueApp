@@ -1,9 +1,16 @@
+<script setup>
+import {defineProps} from "vue"
+
+const props = defineProps(['quiz'])
+</script>
+
+
 <template>
     <div class="card">
-        <img src="" alt="">
+        <img :src="quiz.img" alt="">
         <div class="card-text">
-            <h2>Math</h2>
-            <p>3 questions</p>
+            <h2>{{quiz.name}}</h2>
+            <p>{{quiz.questions.length}} questions</p>
         </div>
     </div>
 </template>
