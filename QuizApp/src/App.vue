@@ -1,47 +1,40 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="container">
+      <header>
+        <h1>Quizes</h1>
+        <input type="text" placeholder="Search...">
+      </header>
+      <div class="options-container">
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+      </div>
+  </div>
+</template>z
 
 <style scoped>
+.container {
+  max-width: 100px;
+  margin: 0 auto;
+
+}
+
 header {
-  line-height: 1.5;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+header h1 {
+  font-weight: bold;
+  margin-right: 30px;
+
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+header input {
+  border: none;
+  background-color: rgba(128, 128, 128, 0.1);
+  padding: 10px;
+  border-radius: 5px;
 }
+
 </style>
