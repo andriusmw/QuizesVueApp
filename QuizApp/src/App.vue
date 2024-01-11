@@ -1,8 +1,21 @@
 <script setup>
   import q from "../src/assets/data/quizes.json"
-  import {ref} from "vue"
+  import {ref, watcg} from "vue"
 
   const quizes = ref(q)
+  const search = ref("")
+
+//Función de filtro
+watch(search, () => {
+  quizes.value = q.filter(quiz => quiz.name.toLowerCase().includes(search.value.toLowerCase()))
+})
+/* el Watch vigila si cambia search, cuando cambia hacemos la lógica.
+Esta función filtra el estado quizes que es un array, de objetos y los
+mira uno por uno que el .name de esos objetos en minusculas  INCLUYA
+el valor de search en minuscula; search es ele stado del input/buscador
+
+*/
+
 </script>
 
 
@@ -11,7 +24,7 @@
    
       <header>
         <h1>Quizes</h1>
-        <input type="text" placeholder="Search...">
+        <input v-model.trim="search" type="text" placeholder="Search...">
       </header>
       <div class="options-container">
         <div v-for="quiz in quizes" :key="quiz.id" class="card">
