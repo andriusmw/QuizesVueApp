@@ -2,7 +2,7 @@
     import  Question from "../components/Question.vue"
     import  QuizHeader from "../components/QuizHeader.vue"
     import {useRoute} from "vue-router"
-    import { ref, watch } from 'vue';
+    import { ref, watch, computed } from 'vue';
     import quizes from "../data/quizes.json"
  
 
@@ -15,13 +15,23 @@
 
     //1-this defines the state
     const currentQuestionIndex = ref(0)
+    //-------------------------------------------------------------------------------------------
+    /*
     const questionStatus = ref(`${currentQuestionIndex.value}/${quiz.questions.length}`)
     //2-this watchs when the states changes and do the action we say
     watch(() => currentQuestionIndex.value, () => {
         //this watch each time the current question index changes
         questionStatus.value = `${currentQuestionIndex.value}/${quiz.questions.length}`
         // this translates as for example:       "1 "        "/ "     "3"
-    })
+    }) */
+    // ------------------------------------------------------------------------------
+    // 3- Computed actually does the same as line 17 to 26.
+const questionStatus = computed(() => {
+    return `${currentQuestionIndex.value}/${quiz.questions.length}`
+})
+
+
+
 </script>
 
 <template>
