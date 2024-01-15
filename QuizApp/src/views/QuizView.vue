@@ -35,6 +35,10 @@ const barPercentage = computed(() => {
     // This is the math operation for obtaining the % of completion but using variables
 } )
 
+const onOptionSelected = (isCorrect) => {
+    console.log("emmited event ", isCorrect)
+}
+
 </script>
 
 <template>
@@ -45,7 +49,10 @@ const barPercentage = computed(() => {
         :barPercentage="barPercentage"
         />
    
-         <Question :question="quiz.questions[currentQuestionIndex]" /> 
+         <Question 
+            :question="quiz.questions[currentQuestionIndex]" 
+            @selectOption="onOptionSelected"
+            /> 
        
     <button @click="currentQuestionIndex++">Next Question</button>
     </div>
