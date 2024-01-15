@@ -42,6 +42,7 @@ const barPercentage = computed(() => {
        {{barPercentage}}
         <QuizHeader 
         :questionStatus="questionStatus"
+        :barPercentage="barPercentage"
         />
    
          <Question :question="quiz.questions[currentQuestionIndex]" /> 
