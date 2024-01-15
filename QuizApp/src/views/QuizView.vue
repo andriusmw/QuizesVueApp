@@ -7,9 +7,7 @@
  
 
     const route = useRoute()
-
     const quizId = parseInt(route.params.id);
-
     const quiz = quizes.find(q => q.id === quizId)
     //Coge el array quizes y mira cada objeto su id y lo compara con quizId
 
@@ -35,8 +33,14 @@ const barPercentage = computed(() => {
     // This is the math operation for obtaining the % of completion but using variables
 } )
 
+const numberOfCorrectAnswers = ref(0)
+
 const onOptionSelected = (isCorrect) => {
-    console.log("emmited event ", isCorrect)
+   if(isCorrect) {
+    numberOfCorrectAnswers.value++
+   }
+
+   currentQuestionIndex.value++
 }
 
 </script>
@@ -53,7 +57,7 @@ const onOptionSelected = (isCorrect) => {
             :question="quiz.questions[currentQuestionIndex]" 
             @selectOption="onOptionSelected"
             /> 
-       
+       {{numberOfCorrectAnswers}}
     <button @click="currentQuestionIndex++">Next Question</button>
     </div>
 </template>
