@@ -1,6 +1,7 @@
 <script setup>
     import  Question from "../components/Question.vue"
     import  QuizHeader from "../components/QuizHeader.vue"
+    import Result from "../components/Result.vue"
     import {useRoute} from "vue-router"
     import { ref, watch, computed } from 'vue';
     import quizes from "../data/quizes.json"
@@ -34,12 +35,15 @@ const barPercentage = computed(() => {
 } )
 
 const numberOfCorrectAnswers = ref(0)
+const showResults = ref(false)
 
 const onOptionSelected = (isCorrect) => {
    if(isCorrect) {
     numberOfCorrectAnswers.value++
    }
-
+    if(quiz.questions.length - 1 === currentQuestionIndex.value ){
+        showResults.value = true
+    }
    currentQuestionIndex.value++
 }
 
@@ -47,18 +51,19 @@ const onOptionSelected = (isCorrect) => {
 
 <template>
     <div>
-       {{barPercentage}}
+    
         <QuizHeader 
         :questionStatus="questionStatus"
         :barPercentage="barPercentage"
         />
    
          <Question 
+            v-if="!showResults"
             :question="quiz.questions[currentQuestionIndex]" 
             @selectOption="onOptionSelected"
             /> 
-       {{numberOfCorrectAnswers}}
-    <button @click="currentQuestionIndex++">Next Question</button>
+      
+         <Result v-else />
     </div>
 </template>
 
