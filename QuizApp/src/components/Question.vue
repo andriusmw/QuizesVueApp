@@ -1,34 +1,26 @@
+<script setup>
+    import {defineProps} from "vue"
+
+    const {question} = defineProps(['question'])
+</script>
+
+
 <template>
 
 <div class="question-container">
-                <h1 class="question">What is the...</h1>
-            </div>
-      <div class="options-container">
+                <h1 class="question">
+                       {{question.text}}
+                </h1>
+</div>
+<div class="options-container">
                 <div class="option">
                     <p class="option-label">A</p>
                     <div class="option-value">
-                        <p>Something</p>
+                    <p>Something</p>
                     </div>
                 </div>
-                 <div class="option">
-                    <p class="option-label">B</p>
-                    <div class="option-value">
-                        <p>Something</p>
-                    </div>
-                </div>
-                 <div class="option">
-                    <p class="option-label">C</p>
-                    <div class="option-value">
-                        <p>Something</p>
-                    </div>
-                </div>
-                 <div class="option">
-                    <p class="option-label">D</p>
-                    <div class="option-value">
-                        <p>Something</p>
-                    </div>
-                </div>
-            </div>
+              
+</div>
 </template>
 
 <style scoped>
