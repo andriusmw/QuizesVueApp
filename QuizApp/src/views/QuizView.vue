@@ -30,13 +30,16 @@ const questionStatus = computed(() => {
     return `${currentQuestionIndex.value}/${quiz.questions.length}`
 })
 
-
+const barPercentage = computed(() => {
+    return `${currentQuestionIndex.value/quiz.questions.length * 100}%`
+    // This is the math operation for obtaining the % of completion but using variables
+} )
 
 </script>
 
 <template>
     <div>
-       
+       {{barPercentage}}
         <QuizHeader 
         :questionStatus="questionStatus"
         />
