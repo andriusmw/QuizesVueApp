@@ -12,13 +12,15 @@
 
     const quiz = quizes.find(q => q.id === quizId)
     //Coge el array quizes y mira cada objeto su id y lo compara con quizId
+
+    //1-this defines the state
     const currentQuestionIndex = ref(0)
-
     const questionStatus = ref(`${currentQuestionIndex.value}/${quiz.questions.length}`)
-
+    //2-this watchs when the states changes and do the action we say
     watch(() => currentQuestionIndex.value, () => {
         //this watch each time the current question index changes
         questionStatus.value = `${currentQuestionIndex.value}/${quiz.questions.length}`
+        // this translates as for example:       "1 "        "/ "     "3"
     })
 </script>
 
