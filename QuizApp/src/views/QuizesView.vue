@@ -6,6 +6,7 @@
 
   const quizes = ref(q)
   const search = ref("")
+  
 
 //Función de filtro
 watch(search, () => {
@@ -29,15 +30,15 @@ el valor de search en minuscula; search es ele stado del input/buscador
         <input v-model.trim="search" type="text" placeholder="Search...">
       </header>
       <div class="options-container">
-        <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz"/>
-    <!--    <div v-for="quiz in quizes" :key="quiz.id" class="card"> 
-        
-          <img :src="quiz.img" alt="Math-img">
-          <div class="card-text">
-              <h2>{{quiz.name}}</h2>
-              <p> {{quiz.questions.length}} questions </p>
-          </div>
-        </div> -->
+        <TransitionGroup name="card" appear>
+          <Card 
+          v-for="quiz in quizes"
+          :key="quiz.id" 
+          :quiz="quiz"
+       
+          />
+        </TransitionGroup>
+ 
       </div>
   </div>
 </template>
@@ -50,6 +51,7 @@ el valor de search en minuscula; search es ele stado del input/buscador
   header {
     margin-bottom: 10px;
     margin-top: 30px;
+    margin-left: 30px;
     display: flex;
     align-items: center;
   }
@@ -70,7 +72,20 @@ el valor de search en minuscula; search es ele stado del input/buscador
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
+    margin-left: 30px;
   }
 
-  
+  .card-enter-from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  .card-enter-to {
+     transform: translateY(0px);
+    opacity: 1;
+  }
+
+  .card-enter-active {
+    transition: all 0.4s ease;
+  }
 </style>
