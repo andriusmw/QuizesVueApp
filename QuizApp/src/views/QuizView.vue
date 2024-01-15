@@ -63,7 +63,12 @@ const onOptionSelected = (isCorrect) => {
             @selectOption="onOptionSelected"
             /> 
       
-         <Result v-else />
+         <Result 
+             v-else 
+            :quizQuestionLength="quiz.questions.length"
+            :numberOfCorrectAnswers="numberOfCorrectAnswers"
+            
+         />
     </div>
 </template>
 
