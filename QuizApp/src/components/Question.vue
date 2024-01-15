@@ -13,12 +13,12 @@
                 </h1>
 </div>
 <div class="options-container">
-                <div class="option">
-                    <p class="option-label">A</p>
-                    <div class="option-value">
-                    <p>Something</p>
-                    </div>
+         <div v-for="option in question.options" :key="option.id" class="option">
+                <p class="option-label">{{option.label}}</p>
+                <div class="option-value">
+                    <p>{{option.text}}</p>
                 </div>
+        </div>
               
 </div>
 </template>
