@@ -19,6 +19,18 @@ el valor de search en minuscula; search es ele stado del input/buscador
 
 */
 
+const beforeEnter = () => {
+  console.log("before enter")
+}
+
+
+const enter = () => {
+   console.log("entering")
+}
+
+const afterEnter = () => {
+ console.log("after enter")
+}
 </script>
 
 
@@ -30,13 +42,19 @@ el valor de search en minuscula; search es ele stado del input/buscador
         <input v-model.trim="search" type="text" placeholder="Search...">
       </header>
       <div class="options-container">
-        <TransitionGroup name="card" appear>
-          <Card 
-          v-for="quiz in quizes"
-          :key="quiz.id" 
-          :quiz="quiz"
+        <TransitionGroup 
+          name="card" 
+          appear
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @after-enter="afterEnter"
+          >
+             <Card 
+             v-for="quiz in quizes"
+            :key="quiz.id" 
+            :quiz="quiz"
        
-          />
+            />
         </TransitionGroup>
  
       </div>
