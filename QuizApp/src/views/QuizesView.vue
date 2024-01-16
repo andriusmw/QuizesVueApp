@@ -3,9 +3,11 @@
   import {ref, watch} from "vue"
 
     import Card from "../components/Card.vue"
+    import gsap from "gsap"
 
   const quizes = ref(q)
   const search = ref("")
+
   
 
 //Función de filtro
@@ -19,14 +21,25 @@ el valor de search en minuscula; search es ele stado del input/buscador
 
 */
 
-const beforeEnter = () => {
+const beforeEnter = (element) => {
+  // card-enter-from
   console.log("before enter")
+  element.style.opacity = 0
+  element.style.transform = "translateY(-60px)"
 }
 
 
-const enter = () => {
-   console.log("entering")
+const enter = (element )=> {
+  //card-enter-to
+   gsap.to(element,{
+    y: 0,
+    opacity: 1,
+    duration: 0.4,
+    delay: element.dataset.index * 0.3
+   })
+     
 }
+
 
 const afterEnter = () => {
  console.log("after enter")
@@ -50,9 +63,10 @@ const afterEnter = () => {
           @after-enter="afterEnter"
           >
              <Card 
-             v-for="quiz in quizes"
+             v-for="(quiz, index) in quizes"
             :key="quiz.id" 
             :quiz="quiz"
+            :data-index="index"
        
             />
         </TransitionGroup>
@@ -92,7 +106,7 @@ const afterEnter = () => {
     margin-top: 40px;
     margin-left: 30px;
   }
-
+/*
   .card-enter-from {
     transform: translateY(-50px);
     opacity: 0;
@@ -106,4 +120,6 @@ const afterEnter = () => {
   .card-enter-active {
     transition: all 0.4s ease;
   }
+
+  */
 </style>
